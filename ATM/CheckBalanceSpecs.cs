@@ -8,14 +8,14 @@ using NUnit.Framework;
 namespace ATM
 {
     [TestFixture]
-    public class CheckBalance : Fixture
+    public class CheckBalanceSpecs : Fixture
     {
         [Test]
         public void AtmDisconnected()
         {
             Runner.RunScenario(
                 given => DisconnectedATM(),
-                when => ICheckBalance(),
+                when => CheckBalance(),
                 then => Error_AtmDisconnected());
 
         }
@@ -25,7 +25,7 @@ namespace ATM
         {
             Runner.RunScenario(
                 given => ConnectedATM(),
-                when => ICheckBalanceWithIncorrectPin(),
+                when => CheckBalanceWithIncorrectPin(),
                 then => Error_IncorrectPin());
 
         }
@@ -36,7 +36,7 @@ namespace ATM
             Runner.RunScenario(
                 given => ConnectedATM(),
                 given => AccountBalanceIs(0),
-                when => ICheckBalance(),
+                when => CheckBalance(),
                 then => ReportedBalanceIs(0));
 
         }
@@ -47,7 +47,7 @@ namespace ATM
             Runner.RunScenario(
                 given => ConnectedATM(),
                 given => AccountBalanceIs(100),
-                when => ICheckBalance(),
+                when => CheckBalance(),
                 then => ReportedBalanceIs(100));
 
         }
@@ -65,7 +65,7 @@ namespace ATM
         {
         }
 
-        private void ICheckBalanceWithIncorrectPin()
+        private void CheckBalanceWithIncorrectPin()
         {
         }
 
@@ -73,7 +73,7 @@ namespace ATM
         {
         }
 
-        private void ICheckBalance()
+        private void CheckBalance()
         {
         }
 
